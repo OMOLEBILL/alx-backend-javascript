@@ -1,5 +1,5 @@
 export default function cleanSet(set, str) {
-  if(str.length === 0) {
+  if (str === undefined || str.length === 0) {
     return '';
   }
   const list = [];
