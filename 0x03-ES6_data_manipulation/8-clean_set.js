@@ -4,6 +4,9 @@ export default function cleanSet(set, str) {
   }
   const list = [];
   for (const item of set) {
+    if (item === undefined) {
+      return '';
+    }
     if (item.startsWith(str)) {
       list.push(item.substring(str.length));
     }
