@@ -1,21 +1,18 @@
-module.exports = function calculateNumber(type, a, b) {
+const calculateNumber = (type, a, b) => {  
   if (type === 'SUM') {
-    const roundA = Math.round(a);
-    const roundB = Math.round(b);
-    const sum = roundA + roundB;
+    const sum = Math.round(a) + Math.round(b);
     return sum;
   } else if (type === 'SUBTRACT') {
-    const roundA = Math.round(a);
-    const roundB = Math.round(b);
-    const difference = roundA - roundB;
-    return difference;
-  } else if(type === 'DIVIDE') {
-    const roundA = Math.round(a);
-    const roundB = Math.round(b);
-    if (roundB === 0) {
-      return 'Error'
-    }
-    const quotient = roundA / roundB;
-    return quotient;
+    const diff = Math.round(a) - Math.round(b);
+    return diff;
+  } else if (type === 'DIVIDE') {
+    const round_a = Math.round(a);
+    const round_b = Math.round(b);
+    if (round_b === 0) return ('Error');
+    const div = round_a / round_b;
+    return div;
   }
-};
+}
+  
+module.exports = calculateNumber;
+  
