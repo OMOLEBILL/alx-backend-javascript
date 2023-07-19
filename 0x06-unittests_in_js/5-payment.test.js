@@ -1,24 +1,25 @@
-const chai = require('chai');
 const sinon = require('sinon');
-const sendPaymentRequestToApi = require('./3-payment');
-const Utils = require('./utils');
+const sendPaymentRequestToApi = require('./5-payment');
+const expect = require('chai').expect;
 
-describe('sendPaymentRequestToApi', function (){
-  let print = {};
+describe("Test Suite with Hooks", function() {
+  let consoleSpy;
   beforeEach(function() {
-    print = sinon.spy(console, 'log');
+    consoleSpy = sinon.spy(console, 'log');
   });
   this.afterEach(function() {
-    print.restore();
+    consoleSpy.restore();
   })
-  it('validates Utils function called once', function() {
+
+  it("test with 100 & 20", function() {
     sendPaymentRequestToApi(100, 20);
-    chai.expect(print.calledWith('The total is: 120')).to.be.true;
-    chai.expect(print.calledOnce).to.be.true;
+    expect(consoleSpy.calledWithExactly('The total is: 120')).to.equal(true);
+    expect(consoleSpy.calledOnce).to.be.true;
+    
   });
-  it('validates arguments called in Utils function', function(){
+  it("test with 10 & 10", function() {
     sendPaymentRequestToApi(10, 10);
-    chai.expect(print.calledWith('The total is: 20')).to.be.true;
-    chai.expect(print.calledOnce).to.be.true;
+    expect(consoleSpy.calledWithExactly('The total is: 20')).to.equal(true);
+    expect(consoleSpy.calledOnce).to.be.true;
   });
 });
